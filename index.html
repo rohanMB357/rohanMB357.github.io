@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rohan Bahorder, Computer Science graduate focused on cybersecurity and AI/ML. Projects, research, skills and contact.">
+<title>Rohan Bahorder Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one left-aligned reading column; hero pairs the intro with a "key parameters" panel from the thesis; case studies read Goal > Approach > Challenge > Result. */
+:root {
+  --bg: #F2F4F6;
+  --surface: #FFFFFF;
+  --fg: #15202A;
+  --muted: #56636F;
+  --line: #D6DCE2;
+  --accent: #1E47C2;
+  --accent-soft: #E3E9FA;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F151B; --surface: #161E26; --fg: #E4E9EE; --muted: #97A4B0;
+    --line: #2A3540; --accent: #86A3FF; --accent-soft: #1C2747; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F151B; --surface: #161E26; --fg: #E4E9EE; --muted: #97A4B0;
+  --line: #2A3540; --accent: #86A3FF; --accent-soft: #1C2747; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg); color: var(--fg); font-family: var(--body);
+  font-size: 1rem; line-height: 1.6;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.12; }
+.label {
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Nav */
+nav { border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; justify-content: space-between; padding-block: 14px; }
+.mark { font-family: var(--display); font-weight: 800; font-size: 1.05rem; color: var(--fg); text-decoration: none; }
+nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 20px; margin: 0; padding: 0; font-size: 0.92rem; }
+nav ul a { color: var(--muted); text-decoration: none; }
+nav ul a:hover { color: var(--fg); }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; padding-block: 64px 56px; align-items: start; }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); font-weight: 800; letter-spacing: -0.02em; margin-top: 14px; }
+.role { font-family: var(--display); font-weight: 500; font-size: clamp(1.15rem, 2.2vw, 1.45rem); color: var(--accent); margin-top: 12px; }
+.intro { max-width: 60ch; color: var(--fg); margin: 20px 0 0; font-size: 1.06rem; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn {
+  font: 600 0.95rem var(--body); padding: 11px 18px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--accent); background: var(--accent); color: var(--bg); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn.ghost { background: transparent; color: var(--accent); }
+.btn:disabled { opacity: 0.6; cursor: default; }
+.status { font-size: 0.85rem; color: var(--muted); margin-top: 10px; min-height: 1.3em; }
+
+.keys { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; min-width: 0; }
+.keys h2 { font-size: 1.05rem; margin-top: 8px; }
+.keys p { font-size: 0.9rem; color: var(--muted); margin: 6px 0 16px; }
+.keys-table { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-family: var(--mono); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-weight: 500; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+td.lvl { color: var(--accent); font-weight: 500; }
+.keys .foot { font-family: var(--mono); font-size: 0.78rem; color: var(--muted); margin: 14px 0 0; }
+
+/* Sections */
+section.block { border-top: 1px solid var(--line); }
+section.block > .wrap { padding-block: 56px; }
+.head { display: grid; gap: 8px; margin-bottom: 28px; }
+.head h2 { font-size: clamp(1.7rem, 3.4vw, 2.3rem); font-weight: 700; }
+.head p { margin: 0; color: var(--muted); max-width: 62ch; }
+
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; }
+.about-grid p { margin: 0 0 14px; max-width: 62ch; }
+.habits { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.habits li { border-left: 2px solid var(--accent); padding-left: 14px; }
+.habits strong { display: block; font-family: var(--display); font-size: 1.02rem; }
+.habits span { color: var(--muted); font-size: 0.95rem; }
+
+/* Case studies */
+.cases { display: grid; gap: 28px; }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 28px; display: grid; gap: 18px; }
+.case-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; align-items: baseline; }
+.case h3 { font-size: 1.4rem; font-weight: 700; }
+.case .kind { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.step h4 { margin: 0 0 6px; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+.step p { margin: 0; font-size: 0.94rem; }
+.step.result p { font-weight: 500; }
+.metric { font-family: var(--display); font-weight: 800; font-size: 1.6rem; color: var(--accent); display: block; line-height: 1.1; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.case-bottom { display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tags li { font-family: var(--mono); font-size: 0.76rem; background: var(--accent-soft); color: var(--fg); padding: 3px 9px; border-radius: 999px; }
+
+.more { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 36px; }
+.mini { border-top: 2px solid var(--fg); padding-top: 14px; display: grid; gap: 8px; align-content: start; }
+.mini h3 { font-size: 1.1rem; }
+.mini p { margin: 0; font-size: 0.93rem; color: var(--muted); }
+.mini .tags li { background: transparent; border: 1px solid var(--line); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
+.skill h3 { font-size: 1rem; margin-bottom: 10px; }
+.skill ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; font-size: 0.94rem; }
+.skill li { color: var(--muted); }
+.interests { margin-top: 32px; padding: 18px 20px; background: var(--accent-soft); border-radius: 10px; }
+.interests p { margin: 6px 0 0; }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
+.contact-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.contact-list li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; padding: 12px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.contact-list .k { font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.contact-list .v { user-select: all; overflow-wrap: anywhere; min-width: 0; }
+.copy { font: 500 0.8rem var(--mono); background: transparent; border: 1px solid var(--line); color: var(--fg); padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 22px; font-size: 0.85rem; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .about-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .more, .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 540px) {
+  .hero .wrap { padding-block: 40px; }
+  .steps, .more, .skills { grid-template-columns: minmax(0, 1fr); }
+  .case { padding: 20px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: transform 0.15s ease; }
+  .btn:hover:not(:disabled) { transform: translateY(-1px); }
+}
+</style>
+</head>
+<body>
+
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#top">Rohan Bahorder</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="label">Cybersecurity &middot; AI/ML &middot; Research</div>
+      <h1>Rohan Bahorder</h1>
+      <div class="role">Computer Science Graduate focused on Cybersecurity and AI/ML</div>
+      <p class="intro">I build and test systems where security and machine learning meet. My thesis protects federated learning with post-quantum encryption, and my ML work runs from raw data to validated models. Everything here comes from university research and projects, and I treated each one as real work: clear goals, careful testing and full delivery.</p>
+      <div class="actions">
+        <a class="btn" href="Rohan_Bahorder_CV.pdf" download>Download CV (PDF)</a>
+        <a class="btn ghost" href="#projects">View projects</a>
+        <a class="btn ghost" href="https://github.com/rohanMB357" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">About</div>
+      <h2>Serious about the work, quick to learn the tools</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>I am a Computer Science graduate from BRAC University. My strongest interests are cybersecurity and AI/ML, and I am most motivated where they overlap: privacy-preserving machine learning and AI for security.</p>
+        <p>I do not have industry experience yet, so I let my projects show how I work. When something blocks the plan, I find another way to finish. In my thesis, lab computers had no admin access, so my first testing method could not run. I redesigned the analysis instead of dropping the experiment.</p>
+        <p>I pick up new tools fast. My thesis needed post-quantum cryptography libraries and the Flower federated learning framework, and I used both to build a working 20-client testbed.</p>
+      </div>
+      <ul class="habits">
+        <li><strong>Start with a clear question</strong><span>Every project begins with what I am trying to find out or build, so I know when it is done.</span></li>
+        <li><strong>Test against a baseline</strong><span>I compare models to simple baselines and measure results with proper validation, not guesswork.</span></li>
+        <li><strong>Work through blockers</strong><span>When a tool or setup fails, I change the method and keep the work moving.</span></li>
+        <li><strong>Finish and document</strong><span>I write up what I did, what worked and what did not, so others can follow it.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Projects and research</div>
+      <h2>How each project went, start to finish</h2>
+      <p>For each one: what I set out to do, how I approached it, the hardest problem I hit, and what came out of it.</p>
+    </div>
+
+    <div class="cases">
+      <article class="case">
+        <div class="case-top">
+          <h3>Post-Quantum Cryptography for Federated Learning</h3>
+          <span class="kind">Undergraduate thesis &middot; Security + ML</span>
+        </div>
+        <div class="steps">
+          <div class="step"><h4>Goal</h4><p>Measure what it costs to protect federated learning model updates with quantum-resistant encryption.</p></div>
+          <div class="step"><h4>Approach</h4><p>Designed three hybrid schemes (ML-KEM, ML-DSA, AES-256) at NIST levels 1, 3 and 5, and ran them over a dedicated secure socket beside a Flower training pipeline.</p></div>
+          <div class="step"><h4>Challenge</h4><p>Lab PCs had no admin rights, so a VM-based normalization was impossible. I switched to a per-client ratio analysis across identically configured machines.</p></div>
+          <div class="step result"><h4>Result</h4><p><span class="metric">20 clients</span>A working multi-machine testbed with HKDF-SHA-256 key derivation, an acknowledgement handshake and nanosecond timing for every crypto step.</p></div>
+        </div>
+        <div class="case-bottom">
+          <ul class="tags"><li>Python</li><li>Flower</li><li>ML-KEM</li><li>ML-DSA</li><li>AES-256</li><li>HKDF</li><li>Sockets</li></ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <h3>Predicting Penalties Won in Football</h3>
+          <span class="kind">Independent research &middot; ML</span>
+        </div>
+        <div class="steps">
+          <div class="step"><h4>Goal</h4><p>Find out why some Premier League teams win more penalties than others in a season.</p></div>
+          <div class="step"><h4>Approach</h4><p>Built an original dataset from FBref, FotMob and FPL across 5 seasons, engineered features for build-up, creation and forward threat, then compared Linear Regression and XGBoost with 5-fold cross-validation.</p></div>
+          <div class="step"><h4>Challenge</h4><p>Three providers had to be merged into one consistent table of 100 team-seasons and about 550 players per season before any modelling could start.</p></div>
+          <div class="step result"><h4>Result</h4><p><span class="metric">21% better</span>than baseline, with RMSE 1.908 and 45 of 100 predictions within one penalty. Error analysis found an individual penalty-specialist effect behind the biggest misses.</p></div>
+        </div>
+        <div class="case-bottom">
+          <ul class="tags"><li>Python</li><li>pandas</li><li>scikit-learn</li><li>XGBoost</li><li>Cross-validation</li></ul>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <h3>Multi-Genre Music Generation</h3>
+          <span class="kind">Course project &middot; Deep learning</span>
+        </div>
+        <div class="steps">
+          <div class="step"><h4>Goal</h4><p>Generate new music across genres using unsupervised deep generative models.</p></div>
+          <div class="step"><h4>Approach</h4><p>Parsed and tokenized MIDI across 5 genres, then trained an LSTM autoencoder, a VAE and an autoregressive Transformer decoder.</p></div>
+          <div class="step"><h4>Challenge</h4><p>Music has no single correct answer, so I compared models against random and Markov chain baselines and used human survey scores as a reward signal.</p></div>
+          <div class="step result"><h4>Result</h4><p><span class="metric">3 models</span>trained and compared, with the Transformer fine-tuned through RLHF-style policy gradient and samples exported back to playable MIDI.</p></div>
+        </div>
+        <div class="case-bottom">
+          <ul class="tags"><li>PyTorch</li><li>LSTM</li><li>VAE</li><li>Transformer</li><li>RLHF</li></ul>
+          <a href="https://github.com/rohanMB357/neural-network-project" target="_blank" rel="noopener">View code on GitHub</a>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="case-top">
+          <h3>Network Design and Socket Programming</h3>
+          <span class="kind">Team course project &middot; Networking</span>
+        </div>
+        <div class="steps">
+          <div class="step"><h4>Goal</h4><p>Build working client-server communication and design a realistic multi-router network.</p></div>
+          <div class="step"><h4>Approach</h4><p>Wrote TCP and UDP client-server programs in Python and modelled the network in Cisco Packet Tracer.</p></div>
+          <div class="step"><h4>Challenge</h4><p>Getting routing right across several routers, including serial DCE links between them, so every network could reach the others.</p></div>
+          <div class="step result"><h4>Result</h4><p><span class="metric">TCP + UDP</span>applications plus a routed multi-router topology, delivered with a team report and a shared work plan.</p></div>
+        </div>
+        <div class="case-bottom">
+          <ul class="tags"><li>Python</li><li>TCP/IP</li><li>UDP</li><li>Cisco Packet Tracer</li></ul>
+          <a href="https://github.com/rohanMB357/cse421" target="_blank" rel="noopener">View code on GitHub</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="more">
+      <div class="mini">
+        <h3>Water Pollution Classification</h3>
+        <p>A supervised classifier for water quality and pollution levels, with data cleaning, feature selection and a written summary of related research.</p>
+        <ul class="tags"><li>scikit-learn</li><li>pandas</li></ul>
+        <a href="https://github.com/rohanMB357/Machine-learning-" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="mini">
+        <h3>EDU Flow</h3>
+        <p>A course management web app with separate student and faculty roles, assignments, quizzes, messaging and result tracking.</p>
+        <ul class="tags"><li>PHP</li><li>MySQL</li><li>JavaScript</li></ul>
+        <a href="https://github.com/rohanMB357/edu-flow" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="mini">
+        <h3>Car Repair Management</h3>
+        <p>A full-stack MERN app for repair bookings, customer records and service management with complete CRUD workflows.</p>
+        <ul class="tags"><li>MongoDB</li><li>Express</li><li>React</li><li>Node.js</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="skills">
+  <div class="wrap">
+    <div class="head">
+      <div class="label">Skills</div>
+      <h2>Tools I have used in real projects</h2>
+    </div>
+    <div class="skills">
+      <div class="skill"><h3>Cryptography and Security</h3><ul><li>ML-KEM (Kyber), ML-DSA (Dilithium)</li><li>AES-256, HKDF-SHA-256</li><li>Hybrid key exchange, digital signatures</li><li>Secure socket communication</li></ul></div>
+      <div class="skill"><h3>Machine Learning and AI</h3><ul><li>PyTorch, scikit-learn, XGBoost</li><li>Flower (federated learning)</li><li>LSTMs, VAEs, Transformers</li><li>Cross-validation, feature engineering</li></ul></div>
+      <div class="skill"><h3>Data</h3><ul><li>pandas, NumPy, Matplotlib</li><li>Jupyter</li><li>Data cleaning and multi-source merging</li></ul></div>
+      <div class="skill"><h3>Networking</h3><ul><li>TCP/IP, UDP</li><li>Socket programming</li><li>Routing, switching, Cisco Packet Tracer</li></ul></div>
+      <div class="skill"><h3>Programming</h3><ul><li>Python, C++</li><li>JavaScript, PHP, SQL</li></ul></div>
+      <div class="skill"><h3>Web and Tools</h3><ul><li>React, Node.js, Express</li><li>MongoDB, MySQL</li><li>Git, GitHub, Linux</li></ul></div>
+    </div>
+    <div class="interests">
+      <div class="label">Research interests</div>
+      <p>Post-quantum cryptography, privacy-preserving and federated machine learning, AI for cybersecurity, secure system design.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="head">
+        <div class="label">Contact</div>
+        <h2>Open to security, AI/ML, research and project roles</h2>
+        <p>I am looking for a team where I can take on hard problems, keep learning and deliver reliable work. The quickest way to reach me is by email.</p>
+        <div class="actions"><a class="btn" href="Rohan_Bahorder_CV.pdf" download>Download CV (PDF)</a></div>
+      </div>
+      <ul class="contact-list">
+        <li><span class="k">Email</span><span class="v" id="email">rohan.bahorder@g.bracu.ac.bd</span><button class="copy" type="button" data-copy="email">Copy</button></li>
+        <li><span class="k">Phone</span><span class="v" id="phone">+880 1854-854721</span><button class="copy" type="button" data-copy="phone">Copy</button></li>
+        <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/rohan-bahorder-541876297/" target="_blank" rel="noopener">rohan-bahorder-541876297</a></li>
+        <li><span class="k">GitHub</span><a class="v" href="https://github.com/rohanMB357" target="_blank" rel="noopener">rohanMB357</a></li>
+        <li><span class="k">Location</span><span class="v">Dhaka, Bangladesh</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap">Rohan Bahorder &middot; B.Sc. Computer Science, BRAC University</div></footer>
+
+<script>
+document.querySelectorAll(".copy").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var el = document.getElementById(b.getAttribute("data-copy"));
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(el);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      b.textContent = "Selected";
+    }
+    try { navigator.clipboard.writeText(el.textContent).then(function () { b.textContent = "Copied"; }, selectIt); }
+    catch (e) { selectIt(); }
+    setTimeout(function () { b.textContent = "Copy"; }, 1800);
+  });
+});
+</script>
+</body>
+</html>
